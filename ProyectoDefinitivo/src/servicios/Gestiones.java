@@ -1,7 +1,6 @@
 package servicios;
 
 import java.util.ArrayList;
-import java.util.Random;
 import java.util.Scanner;
 
 
@@ -11,7 +10,7 @@ import entidades.Postres;
 import entidades.Primeros;
 import entidades.Segundos;
 import repositorios.ListaComidas;
-
+import repositorios.Colores;
 public class Gestiones {
 	
 	private Scanner sc;
@@ -31,7 +30,7 @@ public class Gestiones {
 		while(ok) {
 			
 			
-			System.out.println("Añadir comida/Listado/Salir: ");
+			System.out.println("Añadir comida/Listado/Ver dias/Salir: ");
 			String eleccion = sc.nextLine();
 			
 			switch(eleccion) {
@@ -41,6 +40,9 @@ public class Gestiones {
 				break; 
 			case "listado":
 				verComidas();
+				break;
+			case "ver dias":
+				aleatorio();
 				break;
 			case "salir":
 				System.out.println("\nSaliendo...");
@@ -68,28 +70,55 @@ public class Gestiones {
 		switch(eleccion){
 		
 		case "entrante":
-			System.out.println("¿Tiene gluten?");
+			System.out.println("¿Tiene gluten?: ");
 			String cond = sc.nextLine();
 				switch(cond) {
 					case "si": 
-						comida = new Entrantes();
+						comida = new Entrantes(true);
 						break;
 					case "no":
-						comida = new Entrantes();
+						comida = new Entrantes(false);
 						break;
 				}
 			recorroArray(comida);
 			break;
 		case "primero":
-			comida = new Primeros();
+			System.out.println("¿Tiene gluten?");
+			String cond2 = sc.nextLine();
+				switch(cond2) {
+					case "si": 
+						comida = new Primeros(true);
+						break;
+					case "no":
+						comida = new Primeros(false);
+						break;
+				}
 			recorroArray(comida);
 			break;
 		case "segundo":
-			comida = new Segundos();
+			System.out.println("¿Tiene gluten?");
+			String cond3 = sc.nextLine();
+				switch(cond3) {
+					case "si": 
+						comida = new Segundos(true);
+						break;
+					case "no":
+						comida = new Segundos(false);
+						break;
+				}
 			recorroArray(comida);			
 			break;
 		case "postre":
-			comida = new Postres();
+			System.out.println("¿Tiene gluten?");
+			String cond4 = sc.nextLine();
+				switch(cond4) {
+					case "si": 
+						comida = new Postres(true);
+						break;
+					case "no":
+						comida = new Postres(false);
+						break;
+				}
 			recorroArray(comida);						
 			break;
 		}
@@ -102,21 +131,18 @@ public class Gestiones {
 		for(int i =0;i<listaComidas.size();i++) {
 			Comidas c = listaComidas.get(i);
 			
-			if (c.getClass() == comida.getClass()) {
-				System.out.println("Nombre: "+c.getNombre());
+			if (c.getClass() == comida.getClass() && c.isGluten() == comida.isGluten()) {  //mirar bien esto que es importante
+				System.out.println("Nombre: "+c.getNombre()+"  "+Colores.yellow+c.getValoracion()+Colores.reset);
 			}
 			
 		}
 	}
 	
 	
-	public void generadorAleatorio() {
 		
-		Random r = new Random();
-		
-		
+	public void aleatorio() {
+		gestion.dias();
 	}
-	
 	
 	
 	
