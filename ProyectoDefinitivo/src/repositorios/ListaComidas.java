@@ -337,85 +337,64 @@ public void dias() {
 	System.out.println("Ingrese un dia de la semana: ");
 	String decision = sc.nextLine();
 	switch(decision) {
-	case"lunes":
+	case"lunes", "martes", "miercoles", "jueves", "viernes", "sabado", "domingo":
 		pruebaAleatorio();
 		break;
-	case"martes":
-		pruebaAleatorio();
-		break;
-	case"miercoles":
-		pruebaAleatorio();
-		break;
-	case"jueves":
-		pruebaAleatorio();
-		break;
-	case"viernes":
-		pruebaAleatorio();
-		break;
-	case"sabado":
-		pruebaAleatorio();
-		break;
-	case"domingo":
-		pruebaAleatorio();
-		break;
+	default:
+		System.err.println("Introduzca un dia valido");
 	}
 }
 public void pruebaAleatorio() {
 	
-	Comidas comida = null;
+	
 	System.out.println("Con o sin: ");
 	String decision  = sc.nextLine();
+	boolean gluten = false;
+	
 	switch (decision) {
-		
-	case"con":
-		comida = new Entrantes(true); 
-		comida = new Primeros(true); 
-		comida = new Segundos(true);
-		comida = new Postres(true);
-		metodos(comida);
-		break;
-	case"sin":
-		comida = new Entrantes(false); 
-		comida = new Primeros(false); 
-		comida = new Segundos(false); 
-		comida = new Postres(false);
-		metodos(comida);
-		break;
+		case"con":
+			gluten = true; 
+			break;
+		case"sin":
+			gluten = false; 
+			break;
+		default:
+			System.err.println("Introduzca una opcion valida");
+			break;
 	}
 	
-	        
+	
+	metodos(gluten);
 }
 
 
-public void metodos(Comidas comida) {
+public void metodos(boolean gluten) {
 	
 	// Selecciona aleatoriamente un entrante
-		Comidas entranteSeleccionado = seleccionAleatoria(listaComidas, Entrantes.class);
+		Comidas entranteSeleccionado = seleccionAleatoria(listaComidas, new Entrantes(gluten));
 		// Selecciona aleatoriamente un primero
-		Comidas primeroSeleccionado = seleccionAleatoria(listaComidas, Primeros.class);
+		Comidas primeroSeleccionado = seleccionAleatoria(listaComidas, new Primeros(gluten));
 		// Selecciona aleatoriamente un segundo
-		Comidas segundoSeleccionado = seleccionAleatoria(listaComidas, Segundos.class);
+		Comidas segundoSeleccionado = seleccionAleatoria(listaComidas, new Segundos(gluten));
 		// Selecciona aleatoriamente un postre
-		Comidas postreSeleccionado = seleccionAleatoria(listaComidas, Postres.class);
+		Comidas postreSeleccionado = seleccionAleatoria(listaComidas, new Postres(gluten));
 		
-		if (entranteSeleccionado.isGluten() == comida.isGluten()) {
-        	// Imprime los nombres de los platos seleccionados
-        	System.out.println("Entrante: " + entranteSeleccionado.getNombre()+"\nPrimero: "+primeroSeleccionado.getNombre()+"\nSegundo: "+segundoSeleccionado.getNombre()+"\nPostre: "+postreSeleccionado.getNombre());
-        }else {
-        	System.out.println("Entrante: " + entranteSeleccionado.getNombre()+"\nPrimero: "+primeroSeleccionado.getNombre()+"\nSegundo: "+segundoSeleccionado.getNombre()+"\nPostre: "+postreSeleccionado.getNombre());
-        	
-        }
+		System.out.println("Entrante: " + entranteSeleccionado.getNombre()
+    		+"\nPrimero: "+primeroSeleccionado.getNombre()
+    		+"\nSegundo: "+segundoSeleccionado.getNombre()
+    		+"\nPostre: "+postreSeleccionado.getNombre());
+        
 }
 	
 
 
 // Método para seleccionar aleatoriamente un tipo de comida de la lista
-private static Comidas seleccionAleatoria(ArrayList<Comidas> listaComidas, Class<? extends Comidas> tipo) {
+private static Comidas seleccionAleatoria(ArrayList<Comidas> listaComidas, Comidas tipo) {
     Random random = new Random();
     Comidas comidaSeleccionada = null;
     ArrayList<Comidas> comidasFiltradas = new ArrayList<>();
     for (Comidas comida : listaComidas) {
-        if (tipo.isInstance(comida)) {
+        if (tipo.getClass() == comida.getClass()) {
             comidasFiltradas.add(comida);
         }
     }
@@ -450,6 +429,9 @@ public void masComida() {
 		comida = new Postres();
 		datos(comida);
 		break;
+	default:
+		System.err.println("Introduzca una opcion valida");
+		break;
 	}
 	
 }
@@ -481,7 +463,10 @@ public void datos(Comidas comida) {
 		break;		
 	case "5":
 		comida.setValoracion("★★★★★");
-		break;		
+		break;
+	default:
+		System.err.println("Introduzca una opcion valida");
+		break;
 	}
 	
 	
@@ -495,6 +480,9 @@ public void datos(Comidas comida) {
 		break;
 	case "no":
 		comida.setGluten(false);
+		break;
+	default:
+		System.err.println("Introduzca una opcion valida");
 		break;
 	}
 	

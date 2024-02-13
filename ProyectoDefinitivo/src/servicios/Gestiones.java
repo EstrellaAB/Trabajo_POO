@@ -48,6 +48,9 @@ public class Gestiones {
 				System.out.println("\nSaliendo...");
 				ok=false;
 				break;
+			default:
+				System.err.println("Introduzca una opcion valida");
+				break;
 			}
 		}
 	}
@@ -120,6 +123,9 @@ public class Gestiones {
 						break;
 				}
 			recorroArray(comida);						
+			break;
+		default:
+			System.err.println("Introduzca una opcion valida");
 			break;
 		}
 	}
