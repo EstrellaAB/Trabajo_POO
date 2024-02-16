@@ -46,8 +46,23 @@ public class HabitacionImpl implements Habitacion{
 
 	@Override
 	public String toString() {
-		// TODO: POR EJEMPLO UN SWITCH QUE IMPRIMA "Habitación Individual con un precio de X"
-		return "HabitacionImpl [numPersonas=" + numPersonas + ", precioHabitacion=" + precioHabitacion + "]";
+		String tipo = ""; 
+		switch (numPersonas) {
+			case 1: 
+				tipo = "Individual"; 
+			break;
+			case 2:
+				tipo = "Doble"; 
+			break;
+			case 3:
+				tipo = "Triple"; 
+			break; 
+			case 4:
+				tipo = "Cuádruple"; 
+			break;  
+		}
+		
+		return "Habitacion " + tipo + ", Número de Personas seleccionado = " + numPersonas + ", Precio / noche = " + precioHabitacion +"€";
 	}
 	
 	

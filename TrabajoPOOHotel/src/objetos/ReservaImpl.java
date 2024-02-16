@@ -1,14 +1,16 @@
 package objetos;
 
+
 public class ReservaImpl implements Reserva{
+	//ATRIBUTOS 
 	private String nombreHotel;	
 	private int numPersonaReserva;
 	private int mesReserva;
 	private int diaInicioReserva;
 	private int numDiasReserva;
-	private int precioTotalReserva;	
+	private int precioTotalReserva; 
 	
-	
+//	CONSTRUCTORES
 	public ReservaImpl() {
 		super();
 	}
@@ -23,18 +25,16 @@ public class ReservaImpl implements Reserva{
 		this.mesReserva = mesReserva;
 		this.diaInicioReserva = diaInicioReserva;
 		this.numDiasReserva = numDiasReserva;
-		this.precioTotalReserva = precioTotalReserva;
+		this.precioTotalReserva = precioTotalReserva; 
 	}
 
-
+// GETTERS AND SETTERS 
 	/**
 	 * @return the nombreHotel
 	 */
 	public String getNombreHotel() {
 		return nombreHotel;
 	}
-
-
 
 	/**
 	 * @param nombreHotel the nombreHotel to set
@@ -43,16 +43,12 @@ public class ReservaImpl implements Reserva{
 		this.nombreHotel = nombreHotel;
 	}
 
-
-
 	/**
 	 * @return the mesReserva
 	 */
 	public int getMesReserva() {
 		return mesReserva;
 	}
-
-
 
 	/**
 	 * @param mesReserva the mesReserva to set
@@ -61,16 +57,12 @@ public class ReservaImpl implements Reserva{
 		this.mesReserva = mesReserva;
 	}
 
-
-
 	/**
 	 * @return the diaInicioReserva
 	 */
 	public int getDiaInicioReserva() {
 		return diaInicioReserva;
 	}
-
-
 
 	/**
 	 * @param diaInicioReserva the diaInicioReserva to set
@@ -79,8 +71,6 @@ public class ReservaImpl implements Reserva{
 		this.diaInicioReserva = diaInicioReserva;
 	}
 
-
-
 	/**
 	 * @return the precioTotalReserva
 	 */
@@ -88,16 +78,12 @@ public class ReservaImpl implements Reserva{
 		return precioTotalReserva;
 	}
 
-
-
 	/**
 	 * @param precioTotalReserva the precioTotalReserva to set
 	 */
 	public void setPrecioTotalReserva(int precioTotalReserva) {
 		this.precioTotalReserva = precioTotalReserva;
 	}
-
-
 
 	/**
 	 * @return the numPersonaReserva
@@ -124,32 +110,12 @@ public class ReservaImpl implements Reserva{
 		this.numDiasReserva = numDiasReserva;
 	}
 
-
-
+	
 	@Override
 	public String toString() {
 		
 		return "RESUMEN RESERVA:  \r\n - Hotel = " + nombreHotel + "\r\n - Número de personas = " + numPersonaReserva + "\r\n - Mes reserva ="
 				+ mesReserva + "\r\n - Dia inicio de reserva = " + diaInicioReserva + "\r\n - Número de días = " + numDiasReserva
 				+ "\r\n - Precio Total de la Reserva = " + precioTotalReserva;
-	}
-
-
-
-//	@Override
-//	public String toString() {
-////		String toString = "Hola\r\n" + 
-////						"David";
-////		
-////		return toString;
-//		
-//		
-//	}
-	
-	
-	
-	
-	
-	
-	
+	}	
 }

@@ -1,6 +1,6 @@
 package objetos;
 
-public abstract class DatosDePagoImpl implements DatosDePago{
+public class DatosDePagoImpl implements DatosDePago{
 	private String titularTarjeta;
 	private int numTarjeta;
 	private int mesCaducidad;
@@ -73,6 +73,12 @@ public abstract class DatosDePagoImpl implements DatosDePago{
 	 */
 	public void setAnyoCaducidad(int anyoCaducidad) {
 		this.anyoCaducidad = anyoCaducidad;
+	}
+
+	@Override
+	public String toString() {
+		return "DATOS DE PAGO: \r\n - Titular Tarjeta =" + titularTarjeta + "\r\n - Número Tarjeta =" + numTarjeta + "\r\n - Mes de Caducidad="
+				+ mesCaducidad + "\r\n - Año de caducidad =" + anyoCaducidad ;
 	}
 	
 	

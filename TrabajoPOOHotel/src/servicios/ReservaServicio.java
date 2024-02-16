@@ -122,4 +122,33 @@ public class ReservaServicio {
 		// imprimir reserva
 		System.out.println(r);
 	}
+	
+	
+	// A PARTIR DE AQUI NUEVO AÑADIDO :) 
+	// CONFIRMACION RESERVA 
+	
+	
+	public String confirmacionReserva (Scanner sc) {
+		System.out.println("¿Está conforme con su reserva? [S/N]");
+		String confirmacion = ""; 
+			
+		while (!validarConfirmacion(confirmacion)) {
+			confirmacion = sc.nextLine();
+		}
+
+		return confirmacion;
+		
+	}
+	
+	public boolean validarConfirmacion(String confirmacion) {
+		boolean esValido = false; 
+		
+		if(confirmacion.equals("S")|| confirmacion.equals("N")||confirmacion.equals("s")||confirmacion.equals("n")) {
+			esValido = true; 
+		}else {
+			System.out.println("Debe escribir S/N para aceptar o cancelar la reserva");
+		}
+		
+		return esValido; 
+	}
 }

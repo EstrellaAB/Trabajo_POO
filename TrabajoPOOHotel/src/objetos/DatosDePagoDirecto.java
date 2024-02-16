@@ -26,6 +26,11 @@ public class DatosDePagoDirecto extends DatosDePagoImpl{
 	public void setCvv(int cvv) {
 		this.cvv = cvv;
 	}
+
+	@Override
+	public String toString() {
+		return "DatosDePagoDirecto [cvv=" + cvv + "]";
+	}
 	
 	
 }

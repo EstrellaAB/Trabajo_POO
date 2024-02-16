@@ -7,6 +7,7 @@ import objetos.HabitacionImpl;
 import objetos.HotelImpl;
 import repositorio.HotelRepository;
 import servicios.HotelServicio;
+import servicios.PagoServicio;
 import servicios.ReservaServicio;
 
 public class PortalDeReservasMain {
@@ -33,6 +34,10 @@ public class PortalDeReservasMain {
 		
 		// Elegir barrio y Resumen del pedido
 		realizarReserva(listaHotelesRepositorio);
+		
+		// confirmar reserva
+		
+		confirmarReserva(); 
 
 	}
 
@@ -131,4 +136,86 @@ public class PortalDeReservasMain {
 		ReservaServicio rs = new ReservaServicio();
 		rs.crearReserva(hotelSeleccionado, habitacionSeleccionada, mesReservaSeleccionado, diaInicioReservaSeleccionado, numeroNochesSeleccionado, precioFinal);
 	}
+	
+	
+	public static void confirmarReserva() {
+		// imprimir mensaje confirmacion
+		// seleccionar confirmacion
+		String confirmacion = confirmacionReserva(); 
+		// si está ok -> pago
+		// no ok -> menu principal
+		if (confirmacion.equals("S") ||confirmacion.equals("s")) {
+			pagoReserva();
+		} else {
+			programaPpal();
+		}
+		
+	}
+	
+	public static String confirmacionReserva () {
+		ReservaServicio rs = new ReservaServicio();
+		
+		String confirmacion = rs.confirmacionReserva(sc); 
+		return confirmacion; 
+	}
+	
+	public static void pagoReserva() {
+		//mensaje para ver qué pago quiere
+		//ver qué opcion quiere
+		int opcionPago = seleccionarOpcionPago(); 
+		// pago 1 -> pago total
+		if (opcionPago == 1) {
+			pagoTarjetaDirecto();
+		} else if (opcionPago == 2) {
+			// pago 2 -> tarjeta como garantía;
+			pagoTarjetaGarantia();
+		}
+		//mensaje de cierre 
+		
+		mensajeCierre(); 
+	}
+	
+	public static int seleccionarOpcionPago() {
+		PagoServicio ps = new PagoServicio();
+		
+		int opcionPago = ps.seleccionarOpcionPago(sc); 
+		return opcionPago; 		
+	}
+	
+	public static void pagoTarjetaDirecto() {
+		PagoServicio ps = new PagoServicio();
+		//titular Tarjeta
+		ps.escribirTitularTarjeta(sc); 
+		//numero Tarjeta
+		ps.numeroTarjeta(sc); 
+		//mes caducidad
+		ps.fechaMesCaducidad(); 
+		// anio caducidad
+		ps.fechaAnioCaducidad(); 
+		// cvv
+		ps.numeroCVV(sc); 
+	}
+	
+	public static void pagoTarjetaGarantia() {
+		PagoServicio ps = new PagoServicio();
+		//titular Tarjeta
+		ps.escribirTitularTarjeta(sc); 
+		//numero Tarjeta
+		ps.numeroTarjeta(sc); 
+		//mes caducidad
+		ps.fechaMesCaducidad();		
+		// anio caducidad
+		ps.fechaAnioCaducidad(); 
+	}
+	
+	public static void mensajeCierre() {
+		PagoServicio ps = new PagoServicio();
+		ps.mensajeCierre();
+	}
+	
+	
+	
+	
+	
+	
 }
