@@ -10,6 +10,8 @@ class Hotel extends GestionHotel implements Reserva {
  private boolean estado;
  ArrayList<Habitacion> habitaciones;
 
+ Hotel() {}
+ 
  Hotel(String nombre, ArrayList<Habitacion> habitaciones) {
      this.nombre = nombre;
      this.habitaciones = habitaciones;
