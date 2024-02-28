@@ -1,7 +1,6 @@
 package miParte.objetos;
 
-public abstract class Usuarios {
-
+public class Usuarios {
 	protected String nombreCompleto;
     protected String nombreUsuario;
     protected String contraseña;
@@ -67,7 +66,5 @@ public abstract class Usuarios {
 	public void setNumUsuarios(int numUsuarios) {
 		this.numUsuarios = numUsuarios;
 	}
-    
-    
     
 }
