@@ -141,7 +141,7 @@ public class PortalDeReservasMain {
 	public String confirmacionReserva () {
 		ReservaServicio rs = new ReservaServicio();
 		
-		String confirmacion = rs.confirmacionReserva(sc); 
+		String confirmacion = rs.confirmacionReserva(); 
 		return confirmacion; 
 	}
 	
@@ -171,23 +171,23 @@ public class PortalDeReservasMain {
 	public void pagoTarjetaDirecto() {
 		PagoServicio ps = new PagoServicio();
 		//titular Tarjeta
-		ps.escribirTitularTarjeta(sc); 
+		ps.escribirTitularTarjeta(); 
 		//numero Tarjeta
-		ps.numeroTarjeta(sc); 
+		ps.numeroTarjeta(); 
 		//mes caducidad
 		ps.fechaMesCaducidad(); 
 		// anio caducidad
 		ps.fechaAnioCaducidad(); 
 		// cvv
-		ps.numeroCVV(sc); 
+		ps.numeroCVV(); 
 	}
 	
 	public void pagoTarjetaGarantia() {
 		PagoServicio ps = new PagoServicio();
 		//titular Tarjeta
-		ps.escribirTitularTarjeta(sc); 
+		ps.escribirTitularTarjeta(); 
 		//numero Tarjeta
-		ps.numeroTarjeta(sc); 
+		ps.numeroTarjeta(); 
 		//mes caducidad
 		ps.fechaMesCaducidad();		
 		// anio caducidad

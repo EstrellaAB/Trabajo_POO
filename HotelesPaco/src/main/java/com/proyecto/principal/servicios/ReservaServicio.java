@@ -12,10 +12,10 @@ public class ReservaServicio {
 		System.out.println("Indique el mes de entrada: (MM) ");
 		Utilidades util = new Utilidades();
 		
-		int mes = util.escribirNumero(sc);
+		int mes = util.escribirNumero();
 		//validar que sea entre los 12 meses
 		while(!validarMesReserva(mes)) {
-			mes = util.escribirNumero(sc);
+			mes = util.escribirNumero();
 		}
 		return mes; 
 	}
@@ -37,9 +37,9 @@ public class ReservaServicio {
 		System.out.println("Indique el día de entrada:");
 		Utilidades util = new Utilidades();
 		
-		int dia = util.escribirNumero(sc);
+		int dia = util.escribirNumero();
 		while (!validarDiasReserva(dia, mes)) {
-			dia = util.escribirNumero(sc);
+			dia = util.escribirNumero();
 		}
 		return dia; 
 	}	
@@ -86,7 +86,7 @@ public class ReservaServicio {
 	public int escribirNumeroNoches(Scanner sc) {
 		Utilidades util = new Utilidades();
 		
-		int numeroNoches = util.escribirNumero(sc);
+		int numeroNoches = util.escribirNumero();
 
 		return numeroNoches;
 	}
@@ -128,9 +128,10 @@ public class ReservaServicio {
 	// CONFIRMACION RESERVA 
 	
 	
-	public String confirmacionReserva (Scanner sc) {
+	public String confirmacionReserva () {
+		Scanner sc = new Scanner(System.in);
 		System.out.println("¿Está conforme con su reserva? [S/N]");
-		String confirmacion = ""; 
+		String confirmacion = sc.nextLine(); 
 			
 		while (!validarConfirmacion(confirmacion)) {
 			confirmacion = sc.nextLine();

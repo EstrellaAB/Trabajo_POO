@@ -2,6 +2,8 @@ package com.proyecto.principal.servicios;
 
 import java.util.Scanner;
 
+import com.proyecto.principal.repositorios.Colores;
+
 public class PagoServicio {
 	Scanner sc = new Scanner(System.in); 
 	
@@ -12,10 +14,10 @@ public class PagoServicio {
 		System.out.println("2. Pago en el hotel con tarjeta de garantía");
 		
 		Utilidades util = new Utilidades(); 
-		int opcionPago = util.escribirNumero(sc); 
+		int opcionPago = util.escribirNumero(); 
 		
 		while (!validarOpcionesPago(opcionPago)) {
-			opcionPago = util.escribirNumero(sc);
+			opcionPago = util.escribirNumero();
 		}
 
 		// en caso de que la opcion sea 1: pago directo
@@ -46,23 +48,23 @@ public class PagoServicio {
 	
 	public void datoDePagoDirecto () {
 		//introducir titular tarjeta: 
-		escribirTitularTarjeta(sc); 
+		escribirTitularTarjeta(); 
 		// introducir numero tarjeta y validar: 
-		numeroTarjeta(sc); 
+		numeroTarjeta(); 
 		// introducir mes de caducidad y validar: 
 		fechaMesCaducidad(); 
 		// introducir año de caducidad y validar: 
 		fechaAnioCaducidad(); 
 		//introducir cvv y validar: Clase datos pago directo. 
-		numeroCVV(sc); 
+		numeroCVV(); 
 		
 	}
 	
 	public void datoDePagoGarantia () {
 		//introducir titular tarjeta: 
-		escribirTitularTarjeta(sc);
+		escribirTitularTarjeta();
 		// introducir numero tarjeta y validar: 
-		numeroTarjeta(sc);
+		numeroTarjeta();
 		// introducir mes de caducidad y validar: 
 		fechaMesCaducidad(); 
 		// introducir año de caducidad y validar: 
@@ -70,7 +72,7 @@ public class PagoServicio {
 		
 	}
 	
-	public String escribirTitularTarjeta (Scanner sc) {
+	public String escribirTitularTarjeta () {
 		System.out.println("Titular Tarjeta: ");
 		String nombreTitular = ""; 
 		nombreTitular = sc.nextLine(); 
@@ -78,7 +80,7 @@ public class PagoServicio {
 		return nombreTitular; 
 	}
 	
-	public String numeroTarjeta (Scanner sc) {
+	public String numeroTarjeta () {
 		System.out.println("Número tarjeta (16 dígitos): ");
 
 		String numTarjetaCredito = "";
@@ -105,10 +107,10 @@ public class PagoServicio {
 	public int fechaMesCaducidad() {
 		System.out.println("Mes de caducidad:");
 		Utilidades util = new Utilidades (); 
-		int numeroMesCaducidad =  util.escribirNumero(sc);
+		int numeroMesCaducidad =  util.escribirNumero();
 
 		while (!validarMesCaducidad(numeroMesCaducidad)) {
-			numeroMesCaducidad = util.escribirNumero(sc);
+			numeroMesCaducidad = util.escribirNumero();
 		}
 
 		return numeroMesCaducidad;
@@ -128,10 +130,10 @@ public class PagoServicio {
 	public int fechaAnioCaducidad() {
 		System.out.println("Año de caducidad (YY): ");
 		Utilidades util = new Utilidades ();
-		int numeroAnioCaducidad = util.escribirNumero(sc);
+		int numeroAnioCaducidad = util.escribirNumero();
 
 		while (!validarAnioCaducidad(numeroAnioCaducidad)) {
-			numeroAnioCaducidad = util.escribirNumero(sc);
+			numeroAnioCaducidad = util.escribirNumero();
 		}
 		return numeroAnioCaducidad;
 	}
@@ -148,7 +150,7 @@ public class PagoServicio {
 		return esValido;
 	}
 	
-	public String numeroCVV (Scanner sc) {
+	public String numeroCVV () {
 		System.out.println("CVV: ");
 		String numeroCvv = ""; 
 		numeroCvv = sc.nextLine(); 
@@ -172,7 +174,7 @@ public class PagoServicio {
 	}
 	
 	public void mensajeCierre() {
-		System.out.println("\u001B[32m¡ENHORABUENA, SU RESERVA SE HA PROCESADO CORRECTAMENTE!");
+		System.out.println(Colores.green+"¡ENHORABUENA, SU RESERVA SE HA PROCESADO CORRECTAMENTE!"+Colores.reset);
 	}
 	
 }

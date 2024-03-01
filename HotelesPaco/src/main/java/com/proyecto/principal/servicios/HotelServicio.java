@@ -23,11 +23,11 @@ public class HotelServicio {
 		Utilidades util = new Utilidades();
 		
 		// introducir un numero
-		int numeroHotelIntroducidoPorUsuario = util.escribirNumero(sc);
+		int numeroHotelIntroducidoPorUsuario = util.escribirNumero();
 		
 		// validor numero
 		while (!validarNumeroHotelSeleccionado(numeroHotelIntroducidoPorUsuario, listaHotelesRepositorio)) {
-			numeroHotelIntroducidoPorUsuario = util.escribirNumero(sc);
+			numeroHotelIntroducidoPorUsuario = util.escribirNumero();
 		}
 		
 		HotelImpl hotelSeleccionado = listaHotelesRepositorio.get(numeroHotelIntroducidoPorUsuario - 1); // restamos 1 porque el usuario introduce entre 1 y tamaño de hoteles creados y la lista empieza en 0 hasta tamaño -1
@@ -59,11 +59,11 @@ public class HotelServicio {
 		
 		// imprimir las habitaciones y precios del hotel seleccionado
 		Utilidades util = new Utilidades();
-		int numeroInquilinosHabitacion = util.escribirNumero(sc);
+		int numeroInquilinosHabitacion = util.escribirNumero();
 		// usuario elige la habitacion que quiere y lo valido 
 		
 		while(!validarNumeroPersonasHabitacion(numeroInquilinosHabitacion, listaHabitaciones)) {
-			numeroInquilinosHabitacion = util.escribirNumero(sc); 
+			numeroInquilinosHabitacion = util.escribirNumero(); 
 		}
 		
 		// imprimir la eleccion del usuario

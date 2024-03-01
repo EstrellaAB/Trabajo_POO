@@ -71,7 +71,7 @@ public class Login extends Usuarios {
 				loginUsuario(sc, usuariosRegistrados);
 			break;
 			case 2: 
-				admin(sc);
+				admin(sc, usuariosRegistrados);
 			break;
 			
 			default:
@@ -122,21 +122,43 @@ public class Login extends Usuarios {
 	    }
     }
 	
-	// Funcion para el login de un administrador
-    public void admin(Scanner sc) {
-    	UsuarioAdmind usuario = new UsuarioAdmind();
-        System.out.println("Ingrese su nombre de usuario:");
-        String nom = sc.next();
-        if (usuario.getNombreUsuario().equals(nom)) {
-            System.out.println("Ingrese la contraseña:");
-            String cont = sc.next();
-            if (cont.equals("Guillamon10!")) {
-                System.out.println("Has entrado en la sesión de administrador de " + usuario.getNombreUsuario());
-            } else {
-                System.out.println("Error, contraseña incorrecta.");
-            }
-        }
-    }
+  //Funcion para el login de un administrador
+  	public void admin(Scanner sc,ArrayList<Usuarios> usuariosRegistrados) {
+  	
+  		Random random = new Random();
+  	    int randomNum = random.nextInt(10000);
+  	    for (Usuarios usuario : usuariosRegistrados) {
+  		char nom = 'B'; // Variable de control para bucle de autenticación
+  	    System.out.println("Ingrese su nombre de usuario:");
+  	    String usu = sc.next();
+  	        if (usuario.getNombreUsuario().equals(usu)) {
+  	        	System.out.println("Ingrese la contraseña:");
+  	        	String cont = sc.next();
+  	        	if (cont.equals("Guillamon10!")) {        
+  	    		    while (nom == 'B') {
+  	    		    	 System.out.println("Para verificar que eres un humano, ingresa el siguiente número: " + randomNum);
+  	    			        System.out.println("Ingrese el número que aparece arriba: ");
+  	    			        int usuarioNum = sc.nextInt();
+  	    			
+  	    			        if (usuarioNum == randomNum) {
+  	    			            // Verificación de la contraseña
+  	    			            for (int intentos = 3; intentos > 0; intentos--) {
+  	    		
+  	    			                    nom = 'N'; // Cambia el valor para salir del bucle
+  					                System.out.println("Has entrado en la sesión del administrador: " + usuario.getNombreUsuario());
+  					               
+  					                selectorClases();
+  				    		    }
+  				            }
+  	    		    }
+  			    } else {
+  			    	System.out.println("Error, contraseña incorrecta.");
+  			    }
+  	        }else {
+  	    			System.out.println("Nombre Incorrecto");
+  	        }
+  	    }
+  	}
     
     public void selectorClases() {
     	Scanner sc = new Scanner(System.in);
