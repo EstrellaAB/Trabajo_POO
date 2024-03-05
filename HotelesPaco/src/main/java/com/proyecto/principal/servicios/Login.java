@@ -1,10 +1,11 @@
 package com.proyecto.principal.servicios;
 
+import java.io.File;
+import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.Random;
 import java.util.Scanner;
 
-import com.proyecto.principal.entidades.UsuarioAdmind;
 import com.proyecto.principal.entidades.Usuarios;
 
 public class Login extends Usuarios {
@@ -101,17 +102,16 @@ public class Login extends Usuarios {
 	    		    	 System.out.println("Para verificar que eres un humano, ingresa el siguiente número: " + randomNum);
 	    			        System.out.println("Ingrese el número que aparece arriba: ");
 	    			        int usuarioNum = sc.nextInt();
-	    			
+    			        for (int intentos = 3; intentos > 0; intentos--) {
 	    			        if (usuarioNum == randomNum) {
 	    			            // Verificación de la contraseña
-	    			            for (int intentos = 3; intentos > 0; intentos--) {
-	    		
-	    			                    nom = 'N'; // Cambia el valor para salir del bucle
-					                System.out.println("Has entrado en la sesión de " + usuario.getNombreUsuario()); 
-					               
-					                selectorClases();
-				    		    }
-    			            }
+	    			        	nom = 'N'; // Cambia el valor para salir del bucle
+	    			        	leerTerminos("C:\\Users\\eaber\\Desktop\\trabajos mrir\\PoliticasYTerminos.txt");
+	    			        	 
+				                System.out.println("Has entrado en la sesión de " + usuario.getNombreUsuario()); 
+				               
+			    		    }
+			            }
 	    		    }
 		    } else {
             System.out.println("Error, contraseña incorrecta.");
@@ -177,5 +177,57 @@ public class Login extends Usuarios {
     				System.err.println("Introduzca una opción válida.");
     				break;
     		}
+    		sc.close();
+    }
+    
+    
+    public  void leerTerminos(String filePath) {
+        try {
+            // Lee el contenido del archivo
+            File file = new File(filePath);
+            Scanner scanner = new Scanner(file);
+
+            System.out.println("Contenido del archivo " + file.getName() + ":");
+
+            // Lee línea por línea e imprime en la consola
+            while (scanner.hasNextLine()) {
+                String line = scanner.nextLine();
+                System.out.println(line);
+            }
+
+            // Cierra el scanner
+            scanner.close();
+
+            // Pregunta si quiere continuar
+            Scanner sc = new Scanner(System.in);
+            System.out.println("¿Desea continuar? (Sí/No):");
+            String continueOption = sc.nextLine().toLowerCase();
+            if (continueOption.equals("si") || continueOption.equals("sí")) {
+                System.out.println("Continuando...");
+                 char salir = 'B';
+                 while (salir == 'B') {
+                	System.out.println("Que quiere realizar ahora , 1 entrar en el gestor de menus y reservas , 2 salir");
+                	 int opci = sc.nextInt();
+                	 switch(opci) {
+                	 case 1:
+                		 selectorClases();
+                		 break;
+                	 case 2: 
+                		 System.out.println("Saliendo...");
+                		 salir = 'N';
+                		 break;
+                	default:
+                		System.out.println("Error numero incorrecto");
+                		 break;
+                	 }
+                	 
+                 }
+            } else {
+                System.out.println("Proceso cancelado.");
+            }
+            sc.close();
+        } catch (FileNotFoundException e) {
+            System.out.println("El archivo no pudo ser encontrado.");
+        }
     }
 }
