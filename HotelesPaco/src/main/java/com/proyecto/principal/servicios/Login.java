@@ -106,10 +106,9 @@ public class Login extends Usuarios {
 	    			        if (usuarioNum == randomNum) {
 	    			            // Verificación de la contraseña
 	    			        	nom = 'N'; // Cambia el valor para salir del bucle
-	    			        	leerTerminos("C:\\Users\\eaber\\Desktop\\trabajos mrir\\PoliticasYTerminos.txt");
+	    			        	//cambiarlo segun vuestra ruta 
+	    			        	leerTerminos("C:\\Users\\eaber\\Desktop\\Trabajo_POO-main\\HotelesPaco\\PoliticasYTerminos.txt");
 	    			        	 
-				                System.out.println("Has entrado en la sesión de " + usuario.getNombreUsuario()); 
-				               
 			    		    }
 			            }
 	    		    }
@@ -204,8 +203,6 @@ public class Login extends Usuarios {
             String continueOption = sc.nextLine().toLowerCase();
             if (continueOption.equals("si") || continueOption.equals("sí")) {
                 System.out.println("Continuando...");
-                 char salir = 'B';
-                 while (salir == 'B') {
                 	System.out.println("Que quiere realizar ahora , 1 entrar en el gestor de menus y reservas , 2 salir");
                 	 int opci = sc.nextInt();
                 	 switch(opci) {
@@ -214,14 +211,11 @@ public class Login extends Usuarios {
                 		 break;
                 	 case 2: 
                 		 System.out.println("Saliendo...");
-                		 salir = 'N';
                 		 break;
                 	default:
                 		System.out.println("Error numero incorrecto");
                 		 break;
                 	 }
-                	 
-                 }
             } else {
                 System.out.println("Proceso cancelado.");
             }
