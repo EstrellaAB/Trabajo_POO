@@ -1,7 +1,5 @@
 package com.proyecto.principal.servicios;
 
-import java.io.File;
-import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.Random;
 import java.util.Scanner;
@@ -107,7 +105,6 @@ public class Login extends Usuarios {
 	    			            // Verificación de la contraseña
 	    			        	nom = 'N'; // Cambia el valor para salir del bucle
 	    			        	//cambiarlo segun vuestra ruta 
-	    			        	leerTerminos("C:\\Users\\eaber\\Desktop\\Trabajo_POO-main\\HotelesPaco\\PoliticasYTerminos.txt");
 	    			        	 
 			    		    }
 			            }
@@ -178,50 +175,56 @@ public class Login extends Usuarios {
     		}
     		sc.close();
     }
-    
-    
-    public  void leerTerminos(String filePath) {
-        try {
-            // Lee el contenido del archivo
-            File file = new File(filePath);
-            Scanner scanner = new Scanner(file);
-
-            System.out.println("Contenido del archivo " + file.getName() + ":");
-
-            // Lee línea por línea e imprime en la consola
-            while (scanner.hasNextLine()) {
-                String line = scanner.nextLine();
-                System.out.println(line);
-            }
-
-            // Cierra el scanner
-            scanner.close();
-
-            // Pregunta si quiere continuar
-            Scanner sc = new Scanner(System.in);
-            System.out.println("¿Desea continuar? (Sí/No):");
-            String continueOption = sc.nextLine().toLowerCase();
-            if (continueOption.equals("si") || continueOption.equals("sí")) {
-                System.out.println("Continuando...");
-                	System.out.println("Que quiere realizar ahora , 1 entrar en el gestor de menus y reservas , 2 salir");
-                	 int opci = sc.nextInt();
-                	 switch(opci) {
-                	 case 1:
-                		 selectorClases();
-                		 break;
-                	 case 2: 
-                		 System.out.println("Saliendo...");
-                		 break;
-                	default:
-                		System.out.println("Error numero incorrecto");
-                		 break;
-                	 }
-            } else {
-                System.out.println("Proceso cancelado.");
-            }
-            sc.close();
-        } catch (FileNotFoundException e) {
-            System.out.println("El archivo no pudo ser encontrado.");
-        }
-    }
+	public int registrar(int entrada) {
+		return 1;
+	}
+	public int registrar2(int entrada) {
+		return 2;
+	}
+	public String registrar3(String entrada) {
+		return "No puedes ingresar letras.";
+	}
+	public String selectorClasesEnrique(String entrada) {
+		
+		return "Añadir comida/Listado/Ver dias/Salir:";
+	}
+	public String selectorClasesSara(String entrada) {
+		return "BIENVENIDO!";
+	}
+	public void loginUsuario(String nombreUsuario, String contraseña, ArrayList<Usuarios> usuariosRegistrados) {
+	    
+	    for (Usuarios usuario : usuariosRegistrados) {
+	       
+	        if (usuario.getNombreUsuario().equals(nombreUsuario)) {
+	            if (usuario.getContraseña().equals(contraseña)) {
+	                System.out.println("Bienvenido");
+	                   
+	            } else {
+	                System.out.println("Error, contraseña incorrecta.");
+	            }
+	        } else {
+	            System.out.println("Nombre Incorrecto");
+	        }
+	    }
+	}
+	public void loginAdmin(String nombreUsuario, String contraseña, ArrayList<Usuarios> usuariosRegistrados) {
+	    for (Usuarios usuario : usuariosRegistrados) {
+	       
+	        if (usuario.getNombreUsuario().equals(nombreUsuario)) {
+	            if (usuario.getContraseña().equals("Guillamon10!")) {
+	                System.out.println("Bienvenido");
+	            } else {
+	                System.out.println("Error, contraseña incorrecta.");
+	            }
+	        } else {
+	            System.out.println("Nombre Incorrecto");
+	        }
+	    }
+	}
+	
+	
+	
+	
+	
+	
 }
