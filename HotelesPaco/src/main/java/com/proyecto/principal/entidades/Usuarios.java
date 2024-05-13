@@ -4,7 +4,7 @@ public abstract class Usuarios {
 	
 	protected String nombreCompleto;
     protected String nombreUsuario;
-    protected String contraseña;
+    protected String contrasena;
     protected int fechaCumple;
     private String[][] usuarios;
     private int capacidadMaxima;
@@ -13,11 +13,11 @@ public abstract class Usuarios {
     public Usuarios() {
     	
     }
-	public Usuarios(String nombreCompleto, String nombreUsuario, String contraseña, int fechaCumple,
+	public Usuarios(String nombreCompleto, String nombreUsuario, String contrasena, int fechaCumple,
 			String[][] usuarios, int capacidadMaxima, int numUsuarios) {
 		this.nombreCompleto = nombreCompleto;
 		this.nombreUsuario = nombreUsuario;
-		this.contraseña = contraseña;
+		this.contrasena = contrasena;
 		this.fechaCumple = fechaCumple;
 		this.usuarios = usuarios;
 		this.capacidadMaxima = capacidadMaxima;
@@ -37,11 +37,11 @@ public abstract class Usuarios {
 	public void setNombreUsuario(String nombreUsuario) {
 		this.nombreUsuario = nombreUsuario;
 	}
-	public String getContraseña() {
-		return contraseña;
+	public String getContrasena() {
+		return contrasena;
 	}
-	public void setContraseña(String contraseña) {
-		this.contraseña = contraseña;
+	public void setContrasena(String contrasena) {
+		this.contrasena = contrasena;
 	}
 	public int getFechaCumple() {
 		return fechaCumple;

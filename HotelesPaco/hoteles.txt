@@ -1,0 +1,5 @@
+Hotel Santa Cruz;Santa Cruz;75;115;170;215
+Hotel El Arenal;El Arenal;80;110;160;200
+Hotel Feria;Feria;95;140;185;220
+Hotel Alfalfa;Alfalfa;85;110;165;210
+Hotel San Gil;San Gil;65;95;125;160

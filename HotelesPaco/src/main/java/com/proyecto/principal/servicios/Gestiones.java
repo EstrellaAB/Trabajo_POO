@@ -149,6 +149,16 @@ public class Gestiones {
 	public void aleatorio() {
 		gestion.dias();
 	}
+
+	public void recorroArray(ArrayList<Comidas> listaComidas) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public void menu(String string) {
+		// TODO Auto-generated method stub
+		
+	}
 	
 	
 	

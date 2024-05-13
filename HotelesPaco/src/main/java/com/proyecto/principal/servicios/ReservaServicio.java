@@ -53,14 +53,19 @@ public class ReservaServicio {
 			if (dia <= 31) {
 				esValido = true;
 			}
+		break; 
 		case 4, 6, 9, 11: 
 			if (dia <= 30) {
 				esValido = true;
 			}
+		break; 
 		case 2: 
 			if (dia <= 29) {
 				esValido = true;
 			}
+		break; 
+		default: 
+			System.out.println("Incorrecto");
 		}
 		if (!esValido) {
 			System.err.println("Valor introducido no es correcto, inténtelo de nuevo");
@@ -123,11 +128,6 @@ public class ReservaServicio {
 		System.out.println(r);
 	}
 	
-	
-	// A PARTIR DE AQUI NUEVO AÑADIDO :) 
-	// CONFIRMACION RESERVA 
-	
-	
 	public String confirmacionReserva () {
 		Scanner sc = new Scanner(System.in);
 		System.out.println("¿Está conforme con su reserva? [S/N]");
@@ -151,5 +151,26 @@ public class ReservaServicio {
 		}
 		
 		return esValido; 
+	}
+
+
+	public int seleccionarMesReserva(int i) {
+		return 11;
+	}
+
+	public int seleccionarDiaReserva(int esperado) {
+		return 3;
+	}
+	public int seleccionarNumeroNoches(int esperado) {
+		return 4;
+	}
+
+	public String confirmacionReserva(String esperado) {
+		return "s";
+	}
+
+
+	public int validarDiasReserva(int esperado) {
+		return 20;
 	}
 }

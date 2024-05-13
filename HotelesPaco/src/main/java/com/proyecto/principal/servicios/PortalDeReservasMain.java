@@ -1,5 +1,11 @@
 package com.proyecto.principal.servicios;
 
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -13,7 +19,7 @@ public class PortalDeReservasMain {
 
 	public void programaPpal() {
 
-		ArrayList<HotelImpl> listaHotelesRepositorio = cargarDatosHotel();
+		ArrayList<HotelImpl> listaHotelesRepositorio = cargarDatosHotelDesdeArchivo();
 
 		// Bienvenida
 		mensajeBienvenida();
@@ -27,34 +33,137 @@ public class PortalDeReservasMain {
 
 	}
 
-	public  ArrayList<HotelImpl> cargarDatosHotel() {
+	 public ArrayList<HotelImpl> cargarDatosHotelDesdeArchivo() {
+	        
+		 ArrayList<HotelImpl> result = new ArrayList<HotelImpl>();
 
-		ArrayList<HotelImpl> result = new ArrayList<HotelImpl>();
-		// cargar datos
-		HotelRepository hotelRepository = new HotelRepository();
-		// cargar Lista de precios de hoteles
-		ArrayList<Integer> preciosHotelSantaCruz = hotelRepository.setListaPreciosHabitaciones(75, 115, 170, 215);
-		ArrayList<Integer> preciosElArenal = hotelRepository.setListaPreciosHabitaciones(80, 110, 160, 200); 
-		ArrayList<Integer> preciosFeria = hotelRepository.setListaPreciosHabitaciones(95, 140, 185, 220);
-		ArrayList<Integer> preciosAlfalfa = hotelRepository.setListaPreciosHabitaciones(85, 110, 165, 210);
-		ArrayList<Integer> preciosSanGil = hotelRepository.setListaPreciosHabitaciones(65, 95, 125, 160);
+	        try {
+	        	File archivo = new File ("hoteles.txt");
+	        	FileReader fr = new FileReader(archivo);
+	        	BufferedReader br = new BufferedReader(fr);
+	            String linea;
+	            
+	            do {
+	            	linea = br.readLine();
+	            	if (linea != null) {	            		
+	            		HotelImpl hotel = obtenerDatosLineaFichero(linea); 
+	            		if(hotel != null) {
+	            			result.add(hotel); 
+	            		}	            		
+	            	}
+	            } while (linea != null);
+	            
+	            br.close();
+	            fr.close();
+	            
+	        } catch (IOException e) {
+	            escribirEnArchivo("Se ha producido un error al leer el archivo");
+	            e.printStackTrace();
+	            
+	        } catch (NumberFormatException e) {
+	            System.err.println("Error: Formato de número incorrecto en el archivo");
+	            e.printStackTrace();
+	        }
 
-		// cargar hoteles
+	        return result;
+	    }
+	 
+	 public  HotelImpl obtenerDatosLineaFichero(String linea) {
+		 HotelImpl hotel = null; 
+		 HotelRepository hotelRepository = new HotelRepository();
+		 
+		 String [] datos = linea.split(";"); 
+		 
+		 if(datos.length == 6) {
+			 hotel = new HotelImpl(); 
+			 Integer precioIndividual = getPrecios(datos, 2);
+			 Integer precioDoble = getPrecios(datos, 3);
+			 Integer precioTriple = getPrecios(datos, 4);
+			 Integer precioCuadruple = getPrecios(datos, 5);
+			 
+			 if (validarNombre(datos, linea) && validarBarrio(datos, linea) && validarPrecio(datos, linea) ) { 
+				 ArrayList<Integer> preciosHabitaciones = hotelRepository.setListaPreciosHabitaciones(precioIndividual, precioDoble, precioTriple, precioCuadruple);
+				 hotel = hotelRepository.cargarDatosHotel(datos[0], datos[1], preciosHabitaciones);
+				 
+			 } else {
+				 hotel = null;
+			 }
+		 }
+		 
+		 return hotel; 
+	 }
+	 
+	 
+	 public Integer getPrecios(String[] datos, int i) {
+		 Integer precio = 0;
+		 
+		 try { 
+			 
+			 precio = Integer.parseInt(datos[i]);
+			 
+			 
+		 } catch (Exception e) {
+			
+		 }
+		 
+		 return precio;
+	 }
+	 
+	 public boolean validarNombre(String[]datos, String linea) {
+		 boolean esValido = false; 
+		 	if (datos[0].length()<30) {
+		 		esValido = true; 
+		 	}else {
+		 		escribirEnArchivo("Error en la linea: " + linea + " porque el nombre es muy largo");
+		 	}
+		 return esValido;
+	 }
+	 
+	 public boolean validarBarrio(String[]datos, String linea) {
+		 boolean esValido = false;
+		 if (datos[0].length() < 30) {
+		 		esValido = true; 
+		 	}else {
+		 		escribirEnArchivo("Error en la linea: " + linea + " porque el nombre es muy largo");
+		 	}
+		 		 
+		 return esValido;
+	 }
+	 
+	 public boolean validarPrecio(String[]datos, String linea) {
+		 boolean esValido = false;
+		 
+		 int precio = Integer.parseInt(datos[2]); 
+		 
+		 if(precio > 0) {
+			 esValido = true;
+		 }else {
+			 escribirEnArchivo("Error en la linea: " + linea + " , el precio debe ser mayor a 0");
+		 }
+		 
+		 return esValido;
+	 }
+	
+	
+	 public void escribirEnArchivo(String error) {
 
-		HotelImpl hotelSantaCruz = hotelRepository.cargarDatosHotel("Hotel Santa Cruz", "Santa Cruz", preciosHotelSantaCruz);
-		HotelImpl hotelElArenal = hotelRepository.cargarDatosHotel("Hotel El Arenal", "El Arenal", preciosElArenal);
-		HotelImpl hotelFeria = hotelRepository.cargarDatosHotel("Hotel Feria", "Feria", preciosFeria);
-		HotelImpl hotelAlfalfa = hotelRepository.cargarDatosHotel("Hotel Alfalfa", "Alfalfa", preciosAlfalfa);
-		HotelImpl hotelSanGil = hotelRepository.cargarDatosHotel("Hotel San Gil", "San Gil", preciosSanGil);
+			File archivo = new File("errores.log");
+			try {
+				// pongo el true en FileWriter para que solo me genere
+				// un nuevo archivo que contenga la info del error
+				FileWriter fw = new FileWriter(archivo, true);
+				BufferedWriter bw = new BufferedWriter(fw);
 
-		result.add(hotelSantaCruz);
-		result.add(hotelElArenal);
-		result.add(hotelFeria);
-		result.add(hotelAlfalfa);
-		result.add(hotelSanGil);
+				bw.write("\n" + error);
+				bw.flush();
+				bw.close();
+				fw.close();
 
-		return result;
-	}	
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+
+		}
 	
 
 	public void mensajeBienvenida() {

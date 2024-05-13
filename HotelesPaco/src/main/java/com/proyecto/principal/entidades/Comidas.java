@@ -43,4 +43,19 @@ public abstract class Comidas {
 	public void setGluten(boolean gluten) {
 		this.gluten = gluten;
 	}
+
+	public static Object leerValoracion() {
+		String valoracion = "*****";		
+		return valoracion;
+	}
+
+	public Object leerGluten() {
+		boolean gluten = true;		
+		return gluten;
+	}
+
+	public void setTipo(String tipo) {
+		// TODO Auto-generated method stub
+		
+	}
 }

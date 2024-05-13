@@ -2,6 +2,8 @@ package com.proyecto.principal.entidades;
 
 import java.util.ArrayList;
 
+import com.proyecto.principal.servicios.Utilidades;
+
 public class HotelImpl implements Hotel{
 	private String nombre;
 	private String barrio;
@@ -74,6 +76,13 @@ public class HotelImpl implements Hotel{
 	public String toString() {
 		return nombre + ", situado en " + barrio;
 	}
+
+
+
+
+
+
+	
 	
 	
 }

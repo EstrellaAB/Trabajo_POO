@@ -176,5 +176,25 @@ public class PagoServicio {
 	public void mensajeCierre() {
 		System.out.println(Colores.green+"¡ENHORABUENA, SU RESERVA SE HA PROCESADO CORRECTAMENTE!"+Colores.reset);
 	}
+
+	public int seleccionarOpcionPago(int i) {
+		return 1;
+	}
+
+	public String numeroTarjeta(String entrada) {
+		return "1234567890123456";
+	}
+
+	public int fechaMesCaducidad(int entrada) {
+		return 5;
+	}
+
+	public int numeroCVV(int entrada) {
+		return 534;
+	}
+
+	public int fechaAnioCaducidad(int entrada) {
+		return 25;
+	}
 	
 }

@@ -48,13 +48,6 @@ public class Menu {
 	    } catch (java.util.InputMismatchException a) {
 	        System.out.println("No puedes ingresar letras.");
 	    }
-	}
-
-	public int menu(int entrada) {
-		return 1;
-	}
-
-	public String menu(String entrada) {
-		return "No puedes ingresar letras.";
 	}   
 }
+

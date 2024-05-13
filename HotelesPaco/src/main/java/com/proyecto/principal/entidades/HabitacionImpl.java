@@ -16,6 +16,10 @@ public class HabitacionImpl implements Habitacion{
 		this.precioHabitacion = precioHabitacion;
 	}
 
+	public HabitacionImpl(int i) {
+		// TODO Auto-generated constructor stub
+	}
+
 	/**
 	 * @return the numPersonas
 	 */
@@ -59,7 +63,8 @@ public class HabitacionImpl implements Habitacion{
 			break; 
 			case 4:
 				tipo = "Cuádruple"; 
-			break;  
+			break; 
+			
 		}
 		
 		return "Habitacion " + tipo + ", Número de Personas seleccionado = " + numPersonas + ", Precio / noche = " + precioHabitacion +"€";
