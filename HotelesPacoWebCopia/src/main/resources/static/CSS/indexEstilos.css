@@ -1,0 +1,178 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    background-size: 100px 100px;
+    background-image:url(../IMG/Inicio.jpg);
+    background-size: cover; 
+    background-position: center;
+    background-repeat: no-repeat
+  }
+
+   
+  header {
+    display: flex;
+    justify-content: space-between;
+    margin-top: -70px;
+    align-items: end;
+    padding: 10px;
+    background-image: linear-gradient(to bottom, rgba(0, 0, 0), rgba(0, 0, 0, 0.6)); /* Degradado hacia abajo */
+    color: #fff;
+    position: relative; /* Agregamos esto para asegurarnos de que el degradado sea visible */
+    z-index: 1; /* Ajustamos el índice z para que el encabezado esté por encima del contenido */
+}
+
+
+
+   
+  .left-section,
+  .center-section,
+  .right-section {
+    flex: 1;
+  }
+  .left-section{
+    margin-top: 6px;
+  }
+  img {
+    width: 100%;
+    height: auto;
+    display: block;
+    margin: 0 auto;
+}
+   
+  .left-section {
+    text-align: left;
+  }
+   
+  .center-section {
+    text-align: center;
+  }
+   
+  .right-section {
+    text-align: right;
+  }
+   
+  /* Estilos para los botones del encabezado */
+  .header-btn {
+    padding: 8px 16px;
+    margin: 0 10px;
+    text-decoration: none;
+    color: #fff;
+    border: 1px solid #fff;
+    border-radius: 5px;
+    transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+   
+  }
+  .header-btn {
+    transition: transform 0.3s ease;
+    display:inline-flex;
+    margin: 0 10px;
+    text-decoration: none;
+    color: rgb(255, 255, 255);
+  }
+   
+  #loginBtn:active {
+    transform: translateY(5px);
+  }
+   
+  #registerBtn:active {
+    transform: translateY(5px);
+  }
+   
+  .header-btn:hover {
+    background-color: #fff;
+    color: #333;
+    transform: translateY(-3px);
+   
+  }
+  #loginBtn:active {
+    transform: translateY(5px);
+  }
+   
+  #registerBtn:active {
+    transform: translateY(5px);
+  }
+   
+  /* Estilos generales para los botones */
+  .btn {
+    display: inline-block;
+    padding: 10px 20px;
+    margin: 10px;
+    text-decoration: none;
+    color: #fff;
+    background-color: #333;
+    border-radius: 5px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+  }
+  .btn {
+    transition: transform 0.3s ease, border-width 0.3s ease;
+    display: inline-block;
+    padding: 10px 20px;
+    margin: 10px;
+    text-decoration: none;
+    border: 2px solid transparent;
+    color: black;
+  }
+   
+  .btn:active {
+    transform: scale(1.1);
+    border-width: 4px;
+  }
+   
+  .btn:hover {
+    background-color: #555;
+    color: #fff;
+  }
+   
+  .container, .container2, .container3{
+    width: 80%;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: rgba(253, 253, 253, 0.6);
+    border-radius: 10px;
+    box-shadow: 0px 10px 10px rgba(0, 0, 0, 0.5);
+    margin-bottom: 20px;
+  }
+
+  .container:hover, .container2:hover, .container3:hover{
+
+    transition: 0.5s;
+    transform: scale(1.1);
+  }
+  .container3{
+    margin-bottom: 100px;
+  }
+     
+  .main-content{
+    text-align: center;
+  }
+  .main-content2{
+    text-align: center;
+  }
+  .main-content3 {
+    text-align: center;
+  }
+   
+  .btn {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #333;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 5px;
+    margin-top: 10px;
+  }
+   
+  footer {
+    text-align: center;
+    padding: 10px;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    background-color: #333;
+    color: #fff;
+  }
